@@ -1,6 +1,10 @@
+// Automato finito determinístico (AFD) para validar placas de veículos
+// Lib MAP usada para armazenar a função de transição do autômato
+// Lib Utility usada para armazenar o par de estado e caractere como chave do map
+
 #include <iostream>
 #include <map>
-#include <utility>
+#include <utility> 
 
 
 int main() {
@@ -14,6 +18,7 @@ int main() {
 	std::getline(std::cin, placa);
 
 
+	// Percorre a string placa e atualiza o estado atual com base na função de transição
 	for (int i = 0; i < placa.size(); i++) {
 		char c = placa[i];
 		
@@ -21,7 +26,9 @@ int main() {
 		if (delta.count({ atual, c }) == 0) return 0; // se a transição não existir, a placa é inválida
 		atual = delta[{ atual, c }]; // Atualiza o estado atual com base na função de transição
 	}
-	finais.count(atual) > 0 ? std::cout << "Placa válida" : std::cout << "Placa inválida"; // Verifica se o estado atual é final
+
+	// Verifica se o estado atual é final
+	finais.count(atual) > 0 ? std::cout << "Placa válida" : std::cout << "Placa inválida"; 
 
 	std::cout << std::endl;
 
