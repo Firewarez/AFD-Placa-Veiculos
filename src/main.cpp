@@ -22,10 +22,16 @@ void RegEx(std::string n) {
 
 	for (char l = 'A'; l <= 'Z'; l++) {
 		delta[{"q4", l}] = "q5_mercosul";
+		for (char d = '0'; d <= '9'; d++) {
+			delta[{"q5_mercosul", d}] = "q6_mercosul";
+			delta[{"q6_mercosul", d}] = "q7_m";
+		}
 	}
 
-	for (char l = '0'; l <= '9'; l++) {
-		delta[{"q4", l}] = "q5_mercosul";
+	for (char d = '0'; d <= '9'; d++) {
+		delta[{"q4", d}] = "q5_ant";
+		delta[{"q5_ant", d}] = "q6_ant";
+		delta[{"q6_ant", d}] = "q7_ant";
 	}
 
 	// Percorre a string placa e atualiza o estado atual com base na função de transição
