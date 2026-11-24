@@ -4,8 +4,7 @@
 
 #include <iostream>
 #include <map>
-#include <utility> 
-
+#include <utility>
 
 int main() {
 
@@ -25,6 +24,7 @@ int main() {
 
 		if (delta.count({ atual, c }) == 0) return 0; // se a transição não existir, a placa é inválida
 		atual = delta[{ atual, c }]; // Atualiza o estado atual com base na função de transição
+		if ((c < 'A' || c > 'Z') && (c < '0' || c > '9') && (c != '-')) return 0; // se o caractere não for uma letra, número ou hífen, a placa é inválida
 	}
 
 	// Verifica se o estado atual é final
